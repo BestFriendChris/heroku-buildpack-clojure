@@ -64,7 +64,7 @@ if [ "${PIPESTATUS[*]}" != "0 0" ]; then
 fi
 
 # Clear unused jars
-STALE_JARS=$(join -v 1 <(find "$LOCAL_REPOSITORY" -name '*.jar' | sort) \
+STALE_JARS=$(join --nocheck-order -v 1 <(find "$LOCAL_REPOSITORY" -name '*.jar' | sort) \
                        <(.lein/bin/lein classpath | tr : "\n" | sort))
 # TODO: strip plugin jars from stale jars
 
